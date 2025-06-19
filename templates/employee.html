@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body { background-color: #f4f7fa; font-family: Arial, sans-serif; }
+        .container {
+            width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            background-color: #117a8b;
+        }
+    </style>
+    <script>
+        // Handles frontend validation of employee form
+        function submitDetails(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById("fullName").value;
+            const department = document.getElementById("department").value;
+
+            // TODO: Send fullName and department to backend (/employee POST) for storage in DB
+
+            if (fullName && department) {
+                alert("Details submitted!");
+            } else {
+                alert("Please fill out all fields.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Details</h2>
+
+        <!-- Employee details form -->
+        <form id="employeeForm">
+            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+            <input type="text" id="department" name="department" placeholder="Department ID" required>
+            <button onclick="submitDetails(event)">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

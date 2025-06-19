@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Department Management</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body { background-color: #f4f7fa; font-family: Arial, sans-serif; }
+        .container {
+            width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #6f42c1;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            background-color: #5936a3;
+        }
+    </style>
+    <script>
+        // Handles department creation
+        function submitDepartment(event) {
+            event.preventDefault();
+
+            const deptName = document.getElementById("deptName").value;
+            const deptId = document.getElementById("deptId").value;
+            const deptdesc = document.getElementById("deptdesc").value;
+
+            // TODO: Send deptId and deptName to backend (/departments POST) for DB storage
+
+            if (deptId && deptName && deptdesc) {
+                alert("Department added successfully!");
+            } else {
+                alert("Please complete all fields.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Department</h2>
+
+        <!-- Department creation form -->
+        <form id="departmentForm">
+            <input type="text" id="deptId" name="deptId" placeholder="Department ID" required>
+            <input type="text" id="deptName" name="deptName" placeholder="Department Name" required>
+            <input type="text" id="deptdesc" name="deptdesc" placeholder="Department Description" required>
+            <button onclick="submitDepartment(event)">Add Department</button>
+        </form>
+    </div>
+    <div class="footer">
+        &copy; {{ 2025 }} Employee Management System. All rights reserved.
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body { background-color: #f4f7fa; font-family: Arial, sans-serif; }
+        .container {
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a { color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>👔 EMS Portal</h2>
+    </div>
+    <div class="container">
+        <h2>Employee Login</h2>
+
+        <!-- Form sends login data to backend (Flask route: /login) -->
+        <form method="POST" action="/login">
+            <!-- Backend will verify username and password -->
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Not registered? <a href="/register">Register here</a></p>
+    </div>
+    
+    <div class="footer">
+        &copy; {{ 2025 }} Employee Management System. All rights reserved.
+    </div>
+</body>
+</html>
