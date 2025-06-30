@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Login Page</title>
     <link rel="stylesheet" href="/static/style.css">
-    <style>
+    <!--
         body { background-color: #f4f7fa; font-family: Arial, sans-serif; }
         .container {
             width: 350px;
@@ -30,14 +30,28 @@
             background-color: #0056b3;
         }
         a { color: #007bff; }
-    </style>
+        
+        .flash.success { color: green; }
+        .flash.danger { color: red; }
+        .flash.warning { color: orange; }
+    -->
 </head>
 <body>
+    
     <div class="navbar">
         <h2>👔 EMS Portal</h2>
     </div>
     <div class="container">
-        <h2>Employee Login</h2>
+        <h2>Company Login</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="flash {{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
         <!-- Form sends login data to backend (Flask route: /login) -->
         <form method="POST" action="/login">
@@ -47,7 +61,7 @@
             <button type="submit">Login</button>
         </form>
 
-        <p>Not registered? <a href="/register">Register here</a></p>
+        <p>Not registered? <a href="register">Register here</a></p>
     </div>
     
     <div class="footer">

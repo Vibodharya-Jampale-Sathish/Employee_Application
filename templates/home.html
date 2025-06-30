@@ -1,87 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Employee Management System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        .navbar {
-            background-color: #007bff;
-            padding: 15px 30px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        .hero {
-            padding: 60px 20px;
-            background-color: #f0f2f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 70vh;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #f4f6f8;
-            color: #888;
-            font-size: 14px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Home - EMS Portal</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+  <div class="navbar">
+    <h2>👔 EMS Portal</h2>
+  </div>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <h2>👔 EMS Portal</h2>
-        <div>
-            <a href="{{ url_for('login') }}" class="btn">Login</a>
-            <a href="{{ url_for('register') }}" class="btn">Register</a>
-        </div>
+  <div class="container large text-center">
+    <h1>Welcome to the Employee Management System</h1>
+    <p>Manage employees and departments effortlessly with our intuitive platform.</p>
+    <div class="button-group">
+      <a href="{{ url_for('login') }}" class="dashboard-btn">Login</a>
+      <a href="{{ url_for('register') }}" class="dashboard-btn">Register</a>
     </div>
+  </div>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Welcome to the Employee Management System</h1>
-        <p>Streamline employee records, onboarding, and tracking all in one place.</p>
-        <div class="btn-group">
-            <a href="{{ url_for('login') }}" class="btn">Login</a>
-            <a href="{{ url_for('register') }}" class="btn">Register</a>
-        </div>
-    </div>
-
-    <!-- Optional Footer -->
-    <div class="footer">
-        &copy; {{ 2025 }} Employee Management System. All rights reserved.
-    </div>
-
+  <div class="footer">
+    &copy; 2025 Employee Management System. All rights reserved.
+  </div>
 </body>
 </html>

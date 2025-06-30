@@ -1,83 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Employee Records</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        .records-box {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
-        }
+  <meta charset="UTF-8">
+  <title>Employee Records</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
 
-        table th, table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
 
-        table th {
-            background-color: #007bff;
-            color: white;
-        }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
 
-        .btn-back {
-            display: inline-block;
-            margin-top: 20px;
-            background-color: #6c757d;
-        }
-
-        .btn-back:hover {
-            background-color: #5a6268;
-        }
-    </style>
+    .back-button {
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
+  <div class="navbar">
+    <h2>👔 EMS Portal</h2>
+  </div>
 
-    <div class="records-box">
-        <h2>Employee Records</h2>
+  <div class="container large">
+    <h2>Employee Records</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="flash {{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    <table>
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Name</th>
+          <th>Department ID </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for employee in employees %}
+        <tr>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.department }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
-        {% if records %}
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Position</th>
-                    <th>Department</th>
-                    <!-- Add more columns if needed -->
-                </tr>
-            </thead>
-            <tbody>
-                {% for record in records %}
-                <tr>
-                    <td>{{ record.id }}</td>
-                    <td>{{ record.name }}</td>
-                    <td>{{ record.email }}</td>
-                    <td>{{ record.position }}</td>
-                    <td>{{ record.department }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <p>No records found.</p>
-        {% endif %}
+    <div class="button-container">
+      <a href="{{ url_for('dashboard') }}" class="dashboard-btn">🏠 Back to Dashboard</a>
+  </div>
+  </div>
 
-        <a href="{{ url_for('home') }}" class="btn btn-back">← Back to Home</a>
-    </div>
-
+  <div class="footer">
+    &copy; 2025 Employee Management System. All rights reserved.
+  </div>
 </body>
 </html>

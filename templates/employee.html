@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Employee Form</title>
     <link rel="stylesheet" href="/static/style.css">
-    <style>
+    <!--
         body { background-color: #f4f7fa; font-family: Arial, sans-serif; }
         .container {
             width: 400px;
@@ -29,7 +29,7 @@
         button:hover {
             background-color: #117a8b;
         }
-    </style>
+    -->
     <script>
         // Handles frontend validation of employee form
         function submitDetails(event) {
@@ -51,13 +51,24 @@
 <body>
     <div class="container">
         <h2>Employee Details</h2>
-
+         {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="flash {{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
         <!-- Employee details form -->
-        <form id="employeeForm">
-            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
-            <input type="text" id="department" name="department" placeholder="Department ID" required>
-            <button onclick="submitDetails(event)">Submit</button>
-        </form>
+<form id="employeeForm" action="/employee" method="POST">
+    <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+    <input type="text" id="department" name="department" placeholder="Department Name" required>
+    <button type="submit">Submit</button>
+    <div class="button-container">
+        <a href="{{ url_for('dashboard') }}" class="dashboard-btn">🏠 Back to Dashboard</a>
+    </div>
+</form>
     </div>
 </body>
 </html>

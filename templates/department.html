@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Department Management</title>
     <link rel="stylesheet" href="/static/style.css">
-    <style>
+    <!--
         body { background-color: #f4f7fa; font-family: Arial, sans-serif; }
         .container {
             width: 400px;
@@ -29,7 +29,7 @@
         button:hover {
             background-color: #5936a3;
         }
-    </style>
+    -->
     <script>
         // Handles department creation
         function submitDepartment(event) {
@@ -52,14 +52,26 @@
 <body>
     <div class="container">
         <h2>Add Department</h2>
+       {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="flash {{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
         <!-- Department creation form -->
-        <form id="departmentForm">
-            <input type="text" id="deptId" name="deptId" placeholder="Department ID" required>
-            <input type="text" id="deptName" name="deptName" placeholder="Department Name" required>
-            <input type="text" id="deptdesc" name="deptdesc" placeholder="Department Description" required>
-            <button onclick="submitDepartment(event)">Add Department</button>
-        </form>
+<form id="departmentForm" action="/department" method="POST">
+    <!-- <input type="text" id="deptId" name="deptId" placeholder="Department ID" required> -->
+    <input type="text" id="deptName" name="deptName" placeholder="Department Name" required>
+    <input type="text" id="deptdesc" name="deptdesc" placeholder="Department Description" required>
+    <button type="submit">Add Department</button>
+    <div class="button-container">
+        <a href="{{ url_for('dashboard') }}" class="dashboard-btn">🏠 Back to Dashboard</a>
+    </div>
+</form>
     </div>
     <div class="footer">
         &copy; {{ 2025 }} Employee Management System. All rights reserved.
