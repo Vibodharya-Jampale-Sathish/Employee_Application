@@ -54,3 +54,32 @@ flowchart TD
     DB3 -->|FK: Company_ID| DB1
     DB3 -->|FK: Department_ID| DB2
 ```
+---
+## 🏗️ Project Structure
+
+
+```bash
+employee_application/
+├── app.py                          # Main Flask application
+├── requirements.txt                # Python dependencies
+├── .env                            # Environment variables (DB credentials, secret key)
+├── README.md                       # Project documentation
+├── ARCHITECTURE.md                 # Architecture and Mermaid diagrams
+│
+├── /templates/                     # HTML templates
+│   ├── home.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── employee.html
+│   ├── department.html
+│   └── view.html
+│
+├── /static/                        # Static assets (optional: CSS, JS, images)
+│   ├── styles.css
+│   └── logo.png
+│
+├── /sql/                           # SQL setup scripts
+│   └── schema.sql                  # CREATE TABLE statements for all 3 tables
+
+```
