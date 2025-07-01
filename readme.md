@@ -32,14 +32,6 @@ Run the database.sql file to create the required database for this project, or u
 
 
 ```mermaid
-Thanks again, and you're absolutely right — GitHub's Mermaid parser is very strict. The issue here is using [/route] notation. GitHub does not support slashes (/) or square brackets around node labels unless they follow Mermaid’s syntax rules precisely.
-
-✅ Fixed, GitHub-Compatible Mermaid Diagram
-Here is a fully valid Mermaid diagram that will render without errors on GitHub:
-
-mermaid
-Copy
-Edit
 flowchart TD
     %% User Actions
     A1[Register Page] --> R1[Register Route]
