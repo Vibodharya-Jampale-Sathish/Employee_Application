@@ -33,40 +33,24 @@ Run the database.sql file to create the required database for this project, or u
 
 ```mermaid
 flowchart TD
-    subgraph User
-        A[User Browser]
-        A1[Login/Register Page]
-        A2[Add Employee / Blog]
-        A3[View Records]
-    end
+    %% User Interaction
+    A1[User: Register/Login] --> B1[/register]
+    A1 --> B2[/login]
+    A2[User: Dashboard Access] --> B3[/dashboard]
+    A3[User: Add Department] --> B4[/department]
+    A4[User: Add Employee] --> B5[/employee]
+    A5[User: View Employees] --> B6[/view]
 
-    subgraph Flask_App
-        B[Flask Routes]
-        B1[/register]
-        B2[/login]
-        B3[/add]
-        B4[/view]
-        B5[/logout]
-    end
-
-    subgraph PostgreSQL
-        C1[Company_Login_Details]
-        C2[Employee_Details]
-        C3[Blog_Posts]
-    end
-
-    A1 -->|Form Submit| B1
-    A1 -->|Form Submit| B2
-    A2 -->|Add Employee| B3
-    A3 -->|GET View| B4
-
-    B1 --> C1
+    %% Flask Routes
+    B1 --> C1[Company_Login_Details]
     B2 --> C1
-    B3 --> C2
-    B3 --> C3
-    B4 --> C2
-    B4 --> C3
+    B3 --> C1
+    B4 --> C2[Departments]
+    B5 --> C3[Employee_Details]
+    B6 --> C3
 
-    C2 -->|FK| C1
-    C3 -->|FK| C1
+    %% Table Relationships
+    C2 -->|Company_ID FK| C1
+    C3 -->|Company_ID FK| C1
+    C3 -->|Department_ID FK| C2
 ```
