@@ -5,7 +5,7 @@ import psycopg2
 #Make sure to install psycopg2 with pip install psycopg2
 conn=None 
 try:
-    conn = psycopg2.connect(host='localhost', dbname='employee_app', user='postgres', password='131106', port='5432')
+    conn = psycopg2.connect(host='localhost', dbname='yourdbname', user='postgres', password='your_password', port='5432')
     cursor = conn.cursor()
 except psycopg2.Error as e:
     print(f"Error connecting to the database: {e}")
