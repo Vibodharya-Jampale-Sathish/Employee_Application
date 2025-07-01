@@ -32,25 +32,33 @@ Run the database.sql file to create the required database for this project, or u
 
 
 ```mermaid
+Thanks again, and you're absolutely right — GitHub's Mermaid parser is very strict. The issue here is using [/route] notation. GitHub does not support slashes (/) or square brackets around node labels unless they follow Mermaid’s syntax rules precisely.
+
+✅ Fixed, GitHub-Compatible Mermaid Diagram
+Here is a fully valid Mermaid diagram that will render without errors on GitHub:
+
+mermaid
+Copy
+Edit
 flowchart TD
-    %% User Interaction
-    A1[User: Register/Login] --> B1[/register]
-    A1 --> B2[/login]
-    A2[User: Dashboard Access] --> B3[/dashboard]
-    A3[User: Add Department] --> B4[/department]
-    A4[User: Add Employee] --> B5[/employee]
-    A5[User: View Employees] --> B6[/view]
+    %% User Actions
+    A1[Register Page] --> R1[Register Route]
+    A2[Login Page] --> R2[Login Route]
+    A3[Dashboard Access] --> R3[Dashboard Route]
+    A4[Add Department Form] --> R4[Department Route]
+    A5[Add Employee Form] --> R5[Employee Route]
+    A6[View Records Page] --> R6[View Route]
 
-    %% Flask Routes
-    B1 --> C1[Company_Login_Details]
-    B2 --> C1
-    B3 --> C1
-    B4 --> C2[Departments]
-    B5 --> C3[Employee_Details]
-    B6 --> C3
+    %% Flask Routes to DB
+    R1 --> DB1[Company_Login_Details]
+    R2 --> DB1
+    R3 --> DB1
+    R4 --> DB2[Departments]
+    R5 --> DB3[Employee_Details]
+    R6 --> DB3
 
-    %% Table Relationships
-    C2 -->|Company_ID FK| C1
-    C3 -->|Company_ID FK| C1
-    C3 -->|Department_ID FK| C2
+    %% Relationships
+    DB2 -->|FK: Company_ID| DB1
+    DB3 -->|FK: Company_ID| DB1
+    DB3 -->|FK: Department_ID| DB2
 ```
