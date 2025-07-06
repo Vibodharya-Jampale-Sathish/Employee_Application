@@ -3,7 +3,10 @@ services:
     name: employee-app
     env: python
     buildCommand: ""
-    startCommand: gunicorn app:app
+    startCommand: gunicorn backend:app
     envVars:
       - key: DATABASE_URL
         value: your_database_url_here
+    build:
+    environment:
+      pythonVersion: 3.11.9

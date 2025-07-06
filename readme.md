@@ -83,3 +83,12 @@ employee_application/
 │   └── schema.sql                  # CREATE TABLE statements for all 3 tables
 
 ```
+## 🏗️ Env Structure
+
+---
+
+```env
+DATABASE_URL= Use_your_External_URL
+SECRET_KEY= Secret_Key_For_Flash
+
+```
