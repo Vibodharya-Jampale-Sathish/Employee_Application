@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, flash, redirect, url_for
-import psycopg2
+import psycopg
 from dotenv import load_dotenv
 import os
 
@@ -11,9 +11,9 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 # --------------------------------------------------------------
 # Step 2: Connect to PostgreSQL
 try:
-    conn = psycopg2.connect(DATABASE_URL)
+    conn = psycopg.connect(DATABASE_URL)
     cursor = conn.cursor()
-except psycopg2.Error as e:
+except psycopg.Error as e:
     print(f"❌ Database connection failed: {e}")
     exit()
 
