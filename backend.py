@@ -127,8 +127,7 @@ def view_records():
     conn.commit()
     result = cursor.fetchall()
     conn.commit()
-    if result:
-        CompanyID= result[0][0]
+    CompanyID= result[0][0]
 #-----------------------------------------------------------------------------------------------------------------------------------
     # Validate the input data
     SelectStatement = ''' SELECT "Employee_ID","FullName", "Department_ID" FROM "Employee_Details" WHERE "Company_ID" = %s '''
