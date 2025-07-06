@@ -1,17 +1,26 @@
-from flask import Flask, request,render_template,flash, redirect, url_for
+from flask import Flask, request, render_template, flash, redirect, url_for
 import psycopg2
-#-----------------------------------------------------------------------------------------------------------------------------------
-#Using psycopg2 to connect to a PostgreSQL database
-#Make sure to install psycopg2 with pip install psycopg2
-conn=None 
+from dotenv import load_dotenv
+import os
+
+# --------------------------------------------------------------
+# Step 1: Load environment variables from .env
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+# --------------------------------------------------------------
+# Step 2: Connect to PostgreSQL
 try:
-    conn = psycopg2.connect(host='localhost', dbname='yourdbname', user='postgres', password='your_password', port='5432')
+    conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
 except psycopg2.Error as e:
-    print(f"Error connecting to the database: {e}")
-    exit()    
-app= Flask(__name__)
-app.secret_key = 'EmployeeAppSecretKey2006'  # Set a secret key for session management and flash messages
+    print(f"❌ Database connection failed: {e}")
+    exit()
+
+# --------------------------------------------------------------
+# Step 3: Initialize Flask
+app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY") # Secret key for session management
 #-----------------------------------------------------------------------------------------------------------------------------------
 # Define the routes for the Flask application
 #-----------------------------------------------------------------------------------------------------------------------------------
@@ -271,6 +280,19 @@ def add_employee():
 #-----------------------------------------------------------------------------------------------------------------------------------
 
 
+# Login Route
+#-----------------------------------------------------------------------------------------------------------------------------------
+
+@app.route('/logout')
+def logout():
+    global username
+    username = ""  # Reset the global username
+    flash("You have been logged out.", "info")
+    return redirect(url_for('login'))
+#-----------------------------------------------------------------------------------------------------------------------------------
+
+
 #Running the Flask application
 if __name__ == '__main__':
     app.run(debug=True)    
+    
