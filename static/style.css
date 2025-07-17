@@ -48,7 +48,7 @@ body {
 }
 
 .chatbot-btn {
-    background-color: #17a2b8;
+    background-color: #007bff;
 }
 
 .logout-btn:hover {
@@ -56,7 +56,7 @@ body {
 }
 
 .chatbot-btn:hover {
-    background-color: #138496;
+    background-color: #0056b3;
 }
 
 /* Container Layout */
@@ -174,7 +174,7 @@ input[type="password"] {
 }
 
 .flash-bubble.info {
-    background-color: #3498db;
+    background-color: #007bff;
 }
 
 @keyframes popIn {
