@@ -77,7 +77,6 @@ employee_application/
 │
 ├── /static/                        # Static assets (optional: CSS, JS, images)
 │   ├── styles.css
-│   └── logo.png
 │
 ├── /sql/                           # SQL setup scripts
 │   └── schema.sql                  # CREATE TABLE statements for all 3 tables
