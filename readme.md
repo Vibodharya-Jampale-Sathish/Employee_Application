@@ -79,7 +79,7 @@ employee_application/
 │   ├── styles.css
 │
 ├── /sql/                           # SQL setup scripts
-│   └── schema.sql                  # CREATE TABLE statements for all 3 tables
+│   └── database.sql                  # CREATE TABLE statements for all 3 tables
 
 ```
 ## 🏗️ Env Structure
